@@ -1,0 +1,11 @@
+.env
+.git
+.github
+.gitignore
+.editorconfig
+coverage
+dist
+docker
+docker-compose.yml
+node_modules
+README.md

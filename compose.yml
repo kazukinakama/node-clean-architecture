@@ -1,0 +1,31 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: docker/local/node/Dockerfile
+    restart: unless-stopped
+    environment:
+      NODE_ENV: local
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/var/www/app
+    depends_on:
+      mysql:
+        condition: service_healthy
+  mysql:
+    image: mysql:8.0.32
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_DATABASE: node-template
+      MYSQL_ROOT_PASSWORD: secret
+    volumes:
+      - mysqldata:/var/lib/mysql
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      timeout: 2s
+      retries: 10
+
+volumes:
+  mysqldata:
