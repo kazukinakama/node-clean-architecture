@@ -1,9 +1,8 @@
-import express, { Application, json, Request, Response } from 'express';
+import express, { Application, json } from 'express';
+import { apiRouter } from './infrastructure/routers';
 
 export const app: Application = express();
 
 app.use(json());
 
-app.get('/', (req: Request, res: Response) => {
-  res.json({ message: 'Hello World!' });
-});
+app.use('/api', apiRouter());
