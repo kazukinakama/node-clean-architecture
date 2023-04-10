@@ -1,4 +1,4 @@
-# node-template
+# node-clean-architecture
 
 ## Start the docker containers
 
