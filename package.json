@@ -7,7 +7,7 @@
     "build": "tsc",
     "type-check": "tsc --noEmit",
     "start": "npm run build && node ./dist/server.js",
-    "watch": "nodemon --watch src --ext js,ts --exec npm run start",
+    "start:local": "NODE_ENV=local ts-node-dev -r tsconfig-paths/register ./src/server.ts",
     "lint": "eslint './src/**/*.ts'",
     "lint:fix": "eslint --fix './src/**/*.ts'",
     "format": "prettier --check ./src",

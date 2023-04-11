@@ -3,10 +3,8 @@ FROM node:18.15.0-alpine
 USER node
 WORKDIR /var/www/app
 
-COPY --chown=node:node package.json package-lock.json tsconfig.json ./
+COPY --chown=node:node . .
 
-RUN npm ci
+RUN npm install
 
-COPY --chown=node:node src ./src
-
-CMD [ "npm", "run", "watch" ]
+CMD [ "npm", "run", "start:local" ]
