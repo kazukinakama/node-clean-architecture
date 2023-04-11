@@ -24,7 +24,7 @@ export class SampleInteractor implements SampleUsecaseInterface {
       data: item.data,
     }));
 
-    return this.samplePresenter.success(response);
+    return this.samplePresenter.json(response);
   }
 
   public async create(request: SampleCreateRequest): Promise<void> {
@@ -37,7 +37,7 @@ export class SampleInteractor implements SampleUsecaseInterface {
       data: result.data,
     };
 
-    return this.samplePresenter.success(response);
+    return this.samplePresenter.json(response);
   }
 
   public async find(id: number): Promise<void> {
@@ -48,7 +48,7 @@ export class SampleInteractor implements SampleUsecaseInterface {
       data: result.data,
     };
 
-    return this.samplePresenter.success(response);
+    return this.samplePresenter.json(response);
   }
 
   public async update(id: number, request: SampleUpdateRequest): Promise<void> {
@@ -61,7 +61,7 @@ export class SampleInteractor implements SampleUsecaseInterface {
       data: result.data,
     };
 
-    return this.samplePresenter.success(response);
+    return this.samplePresenter.json(response);
   }
 
   public async delete(id: number): Promise<void> {
@@ -72,6 +72,6 @@ export class SampleInteractor implements SampleUsecaseInterface {
       data: result.data,
     };
 
-    return this.samplePresenter.success(response);
+    return this.samplePresenter.json(response);
   }
 }

@@ -4,6 +4,5 @@ import {
 } from '../../application/usecases/type';
 
 export interface SamplePresenterInterface {
-  success(response: SampleItemResponse | SampleItemsResponse): void;
-  error(status: number, response: string): void;
+  json(response: SampleItemResponse | SampleItemsResponse): void;
 }

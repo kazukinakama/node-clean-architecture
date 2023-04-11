@@ -8,11 +8,7 @@ import {
 export class SamplePresenter implements SamplePresenterInterface {
   public constructor(private readonly res: Response) {}
 
-  public success(response: SampleItemResponse | SampleItemsResponse): void {
+  public json(response: SampleItemResponse | SampleItemsResponse): void {
     this.res.json(response);
-  }
-
-  public error(status: number, message: string): void {
-    this.res.status(status).json({ message: message });
   }
 }
