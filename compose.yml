@@ -18,8 +18,8 @@ services:
     ports:
       - 3306:3306
     environment:
-      MYSQL_DATABASE: node-template
-      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: node-clean-architecture
+      MYSQL_ROOT_PASSWORD: root
     volumes:
       - mysqldata:/var/lib/mysql
     healthcheck:
