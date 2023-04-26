@@ -6,6 +6,7 @@ import { SamplePresenterInterface } from '../../interface/presenters/sample-pres
 import { SamplePresenter } from '../../interface/presenters/sample-presenter';
 import { SampleInteractor } from '../../application/usecases/sample-interactor';
 import { SampleUsecaseInterface } from '../../application/usecases/sample-usecase-interface';
+import { pool } from '../database/connection';
 
 export const sampleRouter = (): Router => {
   const router = Router();
@@ -13,8 +14,11 @@ export const sampleRouter = (): Router => {
   let sampleInteractor: SampleUsecaseInterface;
   let sampleController: SampleController;
 
-  router.use((req: Request, res: Response, next: NextFunction) => {
-    const sampleRepository: SampleRepositoryInterface = new SampleRepository();
+  router.use(async (req: Request, res: Response, next: NextFunction) => {
+    const connection = await pool.getConnection();
+    const sampleRepository: SampleRepositoryInterface = new SampleRepository(
+      connection
+    );
     samplePresenter = new SamplePresenter(res);
     sampleInteractor = new SampleInteractor(sampleRepository, samplePresenter);
     sampleController = new SampleController(sampleInteractor);

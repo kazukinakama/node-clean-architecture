@@ -17,7 +17,7 @@ export class SampleController {
     next: NextFunction
   ): Promise<void> {
     try {
-      const requestParams: SampleGetRequest = { data: req.params.data };
+      const requestParams: SampleGetRequest = req.query;
       this.sampleInteractor.list(requestParams);
     } catch (err) {
       next(err);
